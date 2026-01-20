@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insyirah Zaini - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url("background.gif");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-100px) translateX(50px); }
+            50% { transform: translateY(-200px) translateX(-50px); }
+            75% { transform: translateY(-100px) translateX(100px); }
+        }
+
+        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 30%; top: 60%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 50%; top: 40%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 70%; top: 70%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 90%; top: 30%; animation-delay: 8s; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #B76B7B;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #C2A192;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* Title Section */
+        .hero {
+            text-align: center;
+             display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            animation: slideDown 1s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: #d4a373;
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            background: #B76B7B;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #C2A192;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(183, 107, 123, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #B76B7B;
+            color: #B76B7B;
+        }
+
+        .btn-outline:hover {
+            background: #C2A192;
+            border: 2px solid #C2A192;
+            color: white;
+        }
+
+        /* About me Section */
+
+        .profile-container {
+        display: flex;       /* This puts items side-by-side */
+        }
+
+        .side-image {
+    width: 40%;        
+    height: auto;  
+    object-fit: cover;   /* Ensures image covers the area without squishing */
+    border-radius: 20px 0 0 20px;
+        }
+
+        .profile-section {
+        width: 60%;       
+        padding: 3rem;  
+        display: flex;
+        background: rgba(255, 221, 228, 0.5);
+        padding: 2rem;
+        transition: all 0.3s;
+        border-radius: 0 20px 20px 0;
+        }
+
+         .profile-section h4 {
+            color: white;
+            line-height: 1.6;
+            text-align:  center;
+        }
+
+
+        .education-item {
+            background: transparent;
+            padding: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+        }
+
+        .education-item h3 {
+            color: #B76B7B;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item p {
+            color: white;
+            line-height: 1.6;
+        }
+
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            /* This is the key property: it acts like "fill" in design tools */
+            object-fit: cover; 
+            display: block; /* Removes small gaps at the bottom */  
+        }
+
+        .project-card {
+            background: #f9f6f3;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-card h3 {
+            color: #B76B7B;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f9f6f3;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-item strong {
+            color: #B76B7B;
+            min-width: 150px;
+        }
+
+        .contact-item a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+
+        .title-section img {
+            width: 800px; /* Change this number to make it bigger or smaller */
+            height: auto; /* Keeps the image from getting squished/stretched */
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Detailed Projects Section */
+
+        /* Main container for the entire projects section */
+        .portfolio-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header styling for the main title */
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .portfolio-header h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .portfolio-header p {
+            font-size: 1.1rem;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Each category row (like "Recent Projects", "Design Work", etc.) */
+        .project-row {
+            margin-bottom: 50px;
+        }
+
+        /* Category title styling */
+        .row-title {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 25px;
+            font-weight: 600;
+            padding-left: 10px;
+        }
+
+        /* Container that holds all the project cards in a row */
+        .projects-container {
+            position: relative; /* Needed for the scroll buttons positioning */
+        }
+
+        /* The scrollable area that holds the cards */
+        .projects-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto; /* Allows horizontal scrolling */
+            overflow-y: hidden;
+            padding: 10px;
+            scroll-behavior: smooth; /* Smooth scrolling animation */
+            /* Hide the scrollbar for cleaner look */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+
+        /* Hide scrollbar for Chrome, Safari */
+        .projects-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Individual project card styling */
+        .project-card {
+            min-width: 320px; /* Fixed width so cards don't shrink */
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease; /* Smooth animation for hover */
+            cursor: pointer;
+            flex-shrink: 0; /* Prevents cards from getting smaller */
+        }
+
+        /* Hover effect - card grows slightly and shadow increases */
+        .project-card:hover {
+            transform: scale(1.05); /* Makes card 5% bigger */
+            box-shadow: 0 8px 30px rgba(183, 107, 123, 0.3);
+        }
+
+        /* Thumbnail/preview image area */
+        .project-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #ffc5d3, #ffb3c6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Icon/emoji in the thumbnail */
+        .project-thumbnail .icon {
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+
+        /* Overlay that appears on hover */
+        .project-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(183, 107, 123, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Show overlay when hovering over card */
+        .project-card:hover .project-thumbnail::after {
+            opacity: 1;
+        }
+
+        /* If you have actual images, use this */
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Content area below the thumbnail */
+        .project-content {
+            padding: 20px;
+        }
+
+        /* Project title */
+        .project-content h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        /* Category label (like "Web Development", "Design", etc.) */
+        .project-category {
+            font-size: 0.9rem;
+            color:#B76B7B;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Project description text */
+        .project-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            /* Limits description to 2 lines with ... if too long */
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Scroll buttons (left and right arrows) */
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            opacity: 0; /* Hidden by default */
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #B76B7B;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Show buttons when hovering over the row */
+        .projects-container:hover .scroll-btn {
+            opacity: 1;
+        }
+
+        /* Button hover effect */
+        .scroll-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Position left arrow */
+        .scroll-btn.left {
+            left: -20px;
+        }
+
+        /* Position right arrow */
+        .scroll-btn.right {
+            right: -20px;
+        }
+
+        /* Mobile responsive design */
+        @media (max-width: 768px) {
+            /* Smaller title on mobile */
+            .portfolio-header h1 {
+                font-size: 2rem;
+            }
+
+            /* Smaller row titles */
+            .row-title {
+                font-size: 1.4rem;
+            }
+
+            /* Smaller cards on mobile */
+            .project-card {
+                min-width: 280px;
+            }
+
+            /* Hide scroll buttons on mobile (touch scrolling instead) */
+            .scroll-btn {
+                display: none;
+            }
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+                display: flex;
+            }
+
+            .container h2{
+                margin-top: 0;
+            }
+
+             .portfolio-header h1 {
+                font-size: 2rem;
+            }
+
+            .row-title {
+                font-size: 1.4rem;
+            }
+
+            .detail-card {
+                min-width: 280px;
+            }
+
+            .scroll-btn {
+                display: none;
+            }
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="animated-bg"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+    <nav>
+        <div class="nav-left">
+            <img src="CodeByInsyi.svg" alt="CodeByInsyi" class="logo">
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#detailed-projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Title Section -->
+    <section id="home" class="hero">
+        <div class="container">
+          <img src="title.svg" alt="Insyirah Zaini Portfolio" class="hero-svg">
+            <a href="#" class="btn">DOWNLOAD CV</a>
+            <a href="#detailed-projects" class="btn btn-outline">VIEW PROJECTS</a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+
+    <section id="education">
+
+  <div class="profile-container">
+            <img src="ProfileChibi.svg" class="side-image">
+            
+        <div class="profile-section">
+             <div class="title-section">
+               <img src="InsyiZaini.svg">
+                <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h4>
+            <div class="education-item">
+                <h3>Bachelor in Computer Science (Hons.)</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="education-item">
+                <h3>Foundation of Computer Science</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="education-item">
+                <h3>Certificate in Microsoft 365 Office</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+        </div>
+</div>
+    </section>
+
+
+     <!-- Detailed Projects Section -->
+<div class="portfolio-section" id="detailed-projects">
+        
+        <!-- HEADER with title and description -->
+        <div class="portfolio-header">
+            <h1>My Projects</h1>
+            <p>A collection of my latest work across design, development, and creative projects</p>
+        </div>
+
+        <!-- PROJECT ROW 1: Recent Projects -->
+        <div class="project-row">
+            <h2 class="row-title">Recent Projects</h2>
+            <div class="projects-container">
+                <!-- Left scroll button -->
+                <button class="scroll-btn left" onclick="scrollRow(this, 'left')">‹</button>
+                
+                <!-- Scrollable container with cards -->
+                <div class="projects-scroll">
+                    
+                    <!-- PROJECT CARD 1 -->
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <!-- You can replace the emoji with: <img src="your-image.jpg" alt="Project"> -->
+                            <span class="icon">🛍️</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Web Development</div>
+                            <h3>E-Commerce Platform</h3>
+                            <p class="project-description">A modern shopping experience with seamless checkout and product management</p>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT CARD 2 -->
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">🎨</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Graphic Design</div>
+                            <h3>Brand Identity Design</h3>
+                            <p class="project-description">Complete visual identity including logo, colors, and brand guidelines</p>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT CARD 3 -->
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">💪</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">App Design</div>
+                            <h3>Mobile Fitness App</h3>
+                            <p class="project-description">Health tracking app with personalized workout plans and nutrition guides</p>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT CARD 4 -->
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">✨</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Web Design</div>
+                            <h3>Portfolio Website</h3>
+                            <p class="project-description">Clean and minimal portfolio showcasing creative work and projects</p>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT CARD 5 -->
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">📱</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Marketing</div>
+                            <h3>Social Media Campaign</h3>
+                            <p class="project-description">Engaging content strategy that increased brand awareness by 200%</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Right scroll button -->
+                <button class="scroll-btn right" onclick="scrollRow(this, 'right')">›</button>
+            </div>
+        </div>
+
+        <!-- PROJECT ROW 2: Design Work -->
+        <div class="project-row">
+            <h2 class="row-title">Design Work</h2>
+            <div class="projects-container">
+                <button class="scroll-btn left" onclick="scrollRow(this, 'left')">‹</button>
+                
+                <div class="projects-scroll">
+                    
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">📊</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Interface Design</div>
+                            <h3>UI/UX Dashboard</h3>
+                            <p class="project-description">Analytics dashboard with intuitive data visualization and insights</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">🍽️</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Mobile Design</div>
+                            <h3>Restaurant Menu App</h3>
+                            <p class="project-description">Digital menu with ordering system and real-time kitchen updates</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">💌</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Print Design</div>
+                            <h3>Wedding Invitations</h3>
+                            <p class="project-description">Elegant invitation suite with custom illustrations and calligraphy</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">📸</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Web Design</div>
+                            <h3>Photography Portfolio</h3>
+                            <p class="project-description">Gallery website optimized for high-resolution image display</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">🎙️</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Brand Design</div>
+                            <h3>Podcast Branding</h3>
+                            <p class="project-description">Complete visual identity for a lifestyle and wellness podcast</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <button class="scroll-btn right" onclick="scrollRow(this, 'right')">›</button>
+            </div>
+        </div>
+
+        <!-- PROJECT ROW 3: Development Projects -->
+        <div class="project-row">
+            <h2 class="row-title">Development Projects</h2>
+            <div class="projects-container">
+                <button class="scroll-btn left" onclick="scrollRow(this, 'left')">‹</button>
+                
+                <div class="projects-scroll">
+                    
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">✅</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Web App</div>
+                            <h3>Task Management Tool</h3>
+                            <p class="project-description">Collaborative workspace for teams with real-time updates and notifications</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">🌤️</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">API Integration</div>
+                            <h3>Weather Dashboard</h3>
+                            <p class="project-description">Real-time weather forecasting with interactive maps and alerts</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">👩‍🍳</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Full Stack</div>
+                            <h3>Recipe Sharing Platform</h3>
+                            <p class="project-description">Community-driven recipe collection with ratings and reviews</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">🧘‍♀️</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Mobile Development</div>
+                            <h3>Meditation App</h3>
+                            <p class="project-description">Guided meditation sessions with progress tracking and reminders</p>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <span class="icon">📚</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-category">Web Development</div>
+                            <h3>Learning Management System</h3>
+                            <p class="project-description">Educational platform for online courses and student progress tracking</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <button class="scroll-btn right" onclick="scrollRow(this, 'right')">›</button>
+            </div>
+        </div>
+
+    </div>
+
+        <!-- JAVASCRIPT for scroll functionality -->
+    <script>
+        /**
+         * Function to scroll the project row left or right
+         * @param {HTMLElement} button - The button that was clicked
+         * @param {string} direction - Either 'left' or 'right'
+         */
+        function scrollRow(button, direction) {
+            // Find the scrollable container (the parent's sibling)
+            const container = button.parentElement.querySelector('.projects-scroll');
+            
+            // How much to scroll (600 pixels)
+            const scrollAmount = 600;
+            
+            // Scroll left or right based on direction
+            if (direction === 'left') {
+                container.scrollBy({
+                    left: -scrollAmount,  // Negative = scroll left
+                    behavior: 'smooth'     // Smooth animation
+                });
+            } else {
+                container.scrollBy({
+                    left: scrollAmount,    // Positive = scroll right
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>My Contact</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>PHONE NUMBER</strong>
+                    <a href="tel:60103076435">+60103076435</a>
+                </div>
+                <div class="contact-item">
+                    <strong>EMAIL ADDRESS</strong>
+                    <a href="mailto:syiisyirah@gmail.com">syiisyirah@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>SOCIAL MEDIA</strong>
+                    <a href="#">@reallygreatsite</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
