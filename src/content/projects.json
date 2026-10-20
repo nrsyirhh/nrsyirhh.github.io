@@ -1,0 +1,70 @@
+{
+  "projects": [
+    {
+      "slug": "ufind-app",
+      "title": "OMC Group Project: UFind App",
+      "category": "Visual Basic",
+      "summary": "A campus app for buying, selling, and connecting with students from any university.",
+      "cover": "/uploads/coding.png",
+      "role": "Team member",
+      "duration": "",
+      "team": "Group project",
+      "tools": ["Visual Basic"],
+      "overview": "UFind is a campus app for buying, selling, and connecting with students from any university.\n\n(Replace this text in the admin page with a fuller description of the project.)",
+      "problem": "",
+      "solution": "",
+      "learned": "",
+      "gallery": [],
+      "links": [
+        {
+          "label": "View presentation slides",
+          "url": "https://www.canva.com/design/DAGsrdbuP_g/Zl3TcbSS3FDttZH8b0KeZg/edit?utm_content=DAGsrdbuP_g&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+        }
+      ]
+    },
+    {
+      "slug": "infographics-design",
+      "title": "Infographics Design",
+      "category": "Canva",
+      "summary": "A collection of clear, concise and creative visuals for assignments.",
+      "cover": "/uploads/cert.jpg",
+      "role": "Designer",
+      "duration": "",
+      "team": "Individual",
+      "tools": ["Canva"],
+      "overview": "A collection of clear, concise and creative infographics made for assignments.\n\n(Replace this text in the admin page with more detail.)",
+      "problem": "",
+      "solution": "",
+      "learned": "",
+      "gallery": [],
+      "links": [
+        {
+          "label": "View on Canva",
+          "url": "https://www.canva.com/design/DAGgB5HQ_58/cXzMpstK-gByLs04eLoYqQ/edit?utm_content=DAGgB5HQ_58&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+        }
+      ]
+    },
+    {
+      "slug": "social-media-design",
+      "title": "Social Media Design",
+      "category": "Canva",
+      "summary": "Eye-catching social media designs that connect and engage audiences.",
+      "cover": "/uploads/creative.png",
+      "role": "Designer",
+      "duration": "",
+      "team": "Individual",
+      "tools": ["Canva"],
+      "overview": "Eye-catching social media designs that connect and engage audiences.\n\n(Replace this text in the admin page with more detail.)",
+      "problem": "",
+      "solution": "",
+      "learned": "",
+      "gallery": [],
+      "links": [
+        {
+          "label": "View on Canva",
+          "url": "https://www.canva.com/design/DAG-6sAVTJM/F3VmsPzz6526ReUiqYOr7A/edit?utm_content=DAG-6sAVTJM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+        }
+      ]
+    }
+  ]
+}

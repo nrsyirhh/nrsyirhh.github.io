@@ -1,0 +1,31 @@
+{
+  "name": "Insyirah Zaini",
+  "logoText": "CodeByInsyi",
+  "heroTitle": "Hi, I'm Insyirah",
+  "heroSubtitle": "Computer Science student · Web design & front-end",
+  "cvFile": "/uploads/Insyirah-CV.pdf",
+  "profileImage": "/uploads/ProfileChibi.svg",
+  "about": "I'm Insyirah, a passionate Computer Science student with a growing interest in web design and front-end development. I enjoy creating soft, minimalist interfaces and learning how thoughtful design can improve user experience. My current work focuses on clean layouts, pastel aesthetics, and continuous improvement as I explore coding one project at a time.",
+  "education": [
+    {
+      "title": "Bachelor in Computer Science (Hons.)",
+      "place": "Universiti Teknologi PETRONAS (UTP)",
+      "description": "Currently in Year 1, Semester 2, focusing on C++ and C# programming."
+    },
+    {
+      "title": "Foundation of Computer Science",
+      "place": "Universiti Teknologi PETRONAS (UTP)",
+      "description": "Gained foundational knowledge in HTML, CSS, Python, and Visual Basic."
+    },
+    {
+      "title": "Certificate in Microsoft 365 Office",
+      "place": "Yayasan Melaka International College",
+      "description": "Completed a 3-month post-SPM programme."
+    }
+  ],
+  "contactIntro": "Feel free to reach out if you'd like to connect, collaborate, or learn more about my work. I'm always open to new opportunities, projects, and conversations.",
+  "phone": "",
+  "email": "syiisyirah@gmail.com",
+  "social": "@nrsyirhh",
+  "socialUrl": ""
+}
