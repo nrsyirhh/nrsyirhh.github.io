@@ -700,3 +700,8 @@ h2.left {
     font-size: 1.7rem;
   }
 }
+.hero-title-img {
+  width: min(800px, 90%);
+  height: auto;
+  margin-bottom: 1rem;
+}

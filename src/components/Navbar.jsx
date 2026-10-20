@@ -21,7 +21,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <Link to="/#home" className="logo" onClick={() => setOpen(false)}>
-        {site.logoText}
+        <img src="/uploads/CodeByInsyi.svg" alt="CodeByInsyi" style={{ height: 40 }} />
       </Link>
 
       <button

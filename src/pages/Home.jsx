@@ -31,13 +31,14 @@ export default function Home() {
     <motion.main {...pageAnim}>
       {/* HERO */}
       <section id="home" className="section hero">
-        <motion.h1
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          {site.heroTitle}
-        </motion.h1>
+       <motion.img
+  src="/uploads/title.svg"
+  alt="Insyirah Zaini Portfolio"
+  className="hero-title-img"
+  initial={{ opacity: 0, y: -40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+/>
         <motion.p
           className="subtitle"
           initial={{ opacity: 0 }}
