@@ -5,6 +5,8 @@ import projectData from '../content/projects.json'
 import AnimatedButton from '../components/AnimatedButton.jsx'
 import ProjectCard from '../components/ProjectCard.jsx'
 import Lanyard from './lanyard.jsx';
+import carousel from '../components/carousel'; // Adjust path if needed
+import CircularCarousel from '../components/carousel.jsx'
 
 const pageAnim = {
   initial: { opacity: 0 },
@@ -24,9 +26,21 @@ export default function Home() {
   const scrollRef = useRef(null)
   const projects = projectData.projects || []
 
+
   const scrollRow = (dir) => {
     scrollRef.current?.scrollBy({ left: dir * 400, behavior: 'smooth' })
   }
+  
+  const mappedProjects = projects.map((p) => ({
+    src: p.image || 'https://picsum.photos/400/600', // Fallback image if missing
+    alt: p.title,
+    title: p.title,
+    subtitle: p.category || p.description || 'Project'
+
+  }));
+
+  const carouselItems = [...mappedProjects, ...mappedProjects];
+
 
   return (
     <motion.main {...pageAnim}>
@@ -68,13 +82,26 @@ export default function Home() {
       {/* ABOUT + EDUCATION */}
       <section id="about" className="section">
         <motion.div className="about-card" {...reveal}>
-         <div className="about-image" style={{ width: '100%', height: '400px', position: 'relative', marginTop: '-180px', zIndex: 10 }}>
-            
-            {site.profileImage ? (
-              <img src={site.profileImage} alt={site.name} />
-            ) : (
-              <div className="about-placeholder">{site.name.charAt(0)}</div>
-            )}
+         <div className="about-image" style={{ 
+  position: 'absolute', 
+  top: '0px', 
+  left: '100%', 
+  transform: 'translateX(-60%)', 
+  width: '1050px', 
+  height: '800px', 
+  zIndex: 10,
+  background: 'transparent' 
+}}>
+
+          <Lanyard 
+  frontImage={('/uploads/front-lanyard.svg')}
+  backImage={('/uploads/strap.jpg')}
+  orientation="portrait" 
+  finish="glossy"
+  size={0.38}
+  cardColor="#ffffff" 
+  strapImage= {('/uploads/strap.jpg')}
+/>
           </div>
           <div className="about-text">
             <h2 className="left">About me</h2>
@@ -99,26 +126,44 @@ export default function Home() {
 
 
       {/* PROJECTS */}
+      {/* PROJECTS */}
       <section id="projects" className="section projects-section">
         <motion.div className="projects-wrap" {...reveal}>
           <h2>My Projects</h2>
           <p className="section-sub">
             A collection of my latest work across design, development, and creative projects
           </p>
-          <div className="projects-container">
-            <button className="scroll-btn left" onClick={() => scrollRow(-1)} aria-label="Scroll left">
-              ‹
-            </button>
-            <div className="projects-scroll" ref={scrollRef}>
-              {projects.map((p) => (
-                <ProjectCard key={p.slug} project={p} />
-              ))}
-            </div>
-            <button className="scroll-btn right" onClick={() => scrollRow(1)} aria-label="Scroll right">
-              ›
-            </button>
+          
+          {/* New Circular Carousel replacing the scroll buttons and ProjectCards */}
+          <div style={{ width: '100%', height: '560px', position: 'relative', marginTop: '40px' }}>
+            <CircularCarousel
+              items={carouselItems}
+              preset="panorama" 
+              intro="rise"
+              cardWidth={220}
+              gap={35}
+              aspectRatio={0.75} /* 0.75 makes the cards taller, like portrait photos */
+              speed={10}
+              captions={true}
+               onError={(e) => {
+                // if the picture is missing, just show the pink gradient
+                e.currentTarget.style.display = 'none'
+              }}
+              onItemClick={(item, index) => {
+    const originalProject = projects[index % projects.length];
+    if (originalProject.slug) {
+      window.location.href = `/project/${originalProject.slug}`;
+    } else if (originalProject.link) {
+      window.open(originalProject.link, '_blank'); // Opens external links in a new tab
+    }
+              }}
+            />
+            
+
           </div>
+
         </motion.div>
+        
       </section>
 
       {/* CONTACT */}

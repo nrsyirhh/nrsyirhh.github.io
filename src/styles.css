@@ -228,16 +228,16 @@ h2.left {
   display: flex;
   max-width: 1050px;
   width: 100%;
-  border-radius: 2px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  overflow: visible;
+  background: transparent;
   backdrop-filter: blur(6px);
   box-shadow: 0 12px 40px rgba(120, 50, 70, 0.18);
 }
 
 .about-image {
   flex: 0 0 38%;
-  background: linear-gradient(135deg, var(--blush), #ffb3c6);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
