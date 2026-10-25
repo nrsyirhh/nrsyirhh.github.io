@@ -4,6 +4,7 @@ import site from '../content/site.json'
 import projectData from '../content/projects.json'
 import AnimatedButton from '../components/AnimatedButton.jsx'
 import ProjectCard from '../components/ProjectCard.jsx'
+import Lanyard from './lanyard.jsx';
 
 const pageAnim = {
   initial: { opacity: 0 },
@@ -67,7 +68,8 @@ export default function Home() {
       {/* ABOUT + EDUCATION */}
       <section id="about" className="section">
         <motion.div className="about-card" {...reveal}>
-          <div className="about-image">
+         <div className="about-image" style={{ width: '100%', height: '400px', position: 'relative', marginTop: '-180px', zIndex: 10 }}>
+            
             {site.profileImage ? (
               <img src={site.profileImage} alt={site.name} />
             ) : (
@@ -94,6 +96,7 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
+
 
       {/* PROJECTS */}
       <section id="projects" className="section projects-section">

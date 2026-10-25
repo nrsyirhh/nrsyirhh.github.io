@@ -22,7 +22,7 @@ export default function ProjectCard({ project }) {
               }}
             />
           )}
-          <span className="thumb-overlay">View project →</span>
+          <span className="thumb-overlay">My Projects</span>
         </div>
         <div className="project-content">
           <div className="project-category">{project.category}</div>

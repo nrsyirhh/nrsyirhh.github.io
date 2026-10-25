@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-// Made once here (not inside the component) so it doesn't get rebuilt on every render.
 const MotionLink = motion.create(Link)
 
 /**

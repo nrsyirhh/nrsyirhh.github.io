@@ -22,7 +22,7 @@ html {
 }
 
 body {
-  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins';
   color: var(--text);
   overflow-x: hidden;
   background: #d98aa0;
@@ -47,12 +47,6 @@ a {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.bubble {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
 }
 
 /* ---------- Navigation ---------- */
@@ -131,7 +125,7 @@ h2.left {
 }
 
 .section-sub {
-  color: white;
+  color: --text;
   text-align: center;
   max-width: 640px;
   margin: 0 auto 2rem;
@@ -178,7 +172,7 @@ h2.left {
   background: var(--rose);
   color: white;
   text-decoration: none;
-  border-radius: 50px;
+  border-radius: 80px;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
@@ -234,7 +228,7 @@ h2.left {
   display: flex;
   max-width: 1050px;
   width: 100%;
-  border-radius: 24px;
+  border-radius: 2px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.28);
   backdrop-filter: blur(6px);
@@ -328,14 +322,16 @@ h2.left {
 }
 
 .project-card {
+  position: relative;
   display: block;
   height: 100%;
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
+  background: #F7E8ED;
+  border-radius: 0 ;
+  color: inherit;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 6px 22px rgba(120, 50, 70, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  margin-top:35 px;
 }
 
 .project-card:hover {
@@ -456,7 +452,6 @@ h2.left {
   gap: 1rem;
   padding: 1rem 1.2rem;
   background: var(--cream);
-  border-radius: 12px;
   transition: transform 0.3s;
 }
 
@@ -490,8 +485,8 @@ h2.left {
 .detail-card {
   width: 100%;
   max-width: 880px;
-  background: white;
-  border-radius: 24px;
+  background: #F7E8ED;
+  border-radius: 2px;
   padding: 2.5rem;
   box-shadow: 0 12px 40px rgba(120, 50, 70, 0.22);
   align-self: flex-start;
@@ -540,17 +535,15 @@ h2.left {
 
 .fact {
   flex: 1 1 160px;
-  background: var(--cream);
-  border-radius: 12px;
+  border-radius: 1px;
   padding: 0.8rem 1rem;
 }
 
 .fact-label {
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
   color: var(--rose);
 }
 
@@ -570,8 +563,7 @@ h2.left {
   color: var(--rose-dark);
   font-weight: 600;
   font-size: 0.85rem;
-  padding: 0.35rem 0.9rem;
-  border-radius: 50px;
+  padding: 0.4rem 0.9rem;
 }
 
 .detail-block {
