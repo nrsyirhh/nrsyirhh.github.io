@@ -1,0 +1,95 @@
+# ------------------------------------------------------------------
+# ADMIN SETTINGS  (this file builds the forms you see at /admin)
+#
+# >>> You MUST change the "repo" line below to your own GitHub repo,
+# >>> for example:  repo: insyirah/my-portfolio
+# ------------------------------------------------------------------
+backend:
+  name: github
+  repo: nrsyirhh/nrsyirhh.github.io
+  branch: main
+
+# Where uploaded pictures/files are saved, and how the website links to them
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  # ---------------- PROJECTS ----------------
+  - name: projects
+    label: Projects
+    files:
+      - name: projects
+        label: All Projects
+        file: src/content/projects.json
+        format: json
+        fields:
+          - label: Projects
+            name: projects
+            widget: list
+            summary: "{{fields.title}}"
+            add_to_top: true
+            fields:
+              - { label: Title, name: title, widget: string }
+              - label: Page address (slug)
+                name: slug
+                widget: string
+                hint: "Lowercase letters and dashes only, e.g. my-first-app. Becomes yoursite.com/projects/my-first-app"
+              - { label: Category, name: category, widget: string, hint: "Shown above the title, e.g. Web Development, Canva, Python" }
+              - { label: Short summary, name: summary, widget: text, hint: "1-2 sentences, shown on the project card" }
+              - { label: Cover image, name: cover, widget: image, required: false }
+              - { label: My role, name: role, widget: string, required: false }
+              - { label: Duration, name: duration, widget: string, required: false, hint: "e.g. 3 weeks" }
+              - { label: Team, name: team, widget: string, required: false, hint: "e.g. Individual, or Group of 4" }
+              - label: Tools used
+                name: tools
+                widget: list
+                required: false
+                hint: "One item per tool, e.g. React, Figma, Python"
+              - { label: Overview, name: overview, widget: text, required: false, hint: "What is this project?" }
+              - { label: The problem, name: problem, widget: text, required: false, hint: "What problem were you solving?" }
+              - { label: My solution, name: solution, widget: text, required: false, hint: "What did you build / do?" }
+              - { label: What I learned, name: learned, widget: text, required: false }
+              - label: Gallery (screenshots)
+                name: gallery
+                widget: list
+                required: false
+                field: { label: Image, name: image, widget: image }
+              - label: Links
+                name: links
+                widget: list
+                required: false
+                summary: "{{fields.label}}"
+                hint: "Buttons at the bottom of the project page (demo, GitHub, slides...)"
+                fields:
+                  - { label: Button text, name: label, widget: string }
+                  - { label: URL, name: url, widget: string }
+
+  # ---------------- ABOUT & CONTACT ----------------
+  - name: site
+    label: About & Contact
+    files:
+      - name: site
+        label: Site Info
+        file: src/content/site.json
+        format: json
+        fields:
+          - { label: Your name, name: name, widget: string }
+          - { label: Logo text (top left), name: logoText, widget: string }
+          - { label: Big title on home page, name: heroTitle, widget: string }
+          - { label: Subtitle on home page, name: heroSubtitle, widget: string }
+          - { label: CV file (PDF), name: cvFile, widget: file, required: false, hint: "Upload a PDF to show the Download CV button. Leave empty to hide it." }
+          - { label: Profile picture, name: profileImage, widget: image, required: false }
+          - { label: About me, name: about, widget: text }
+          - label: Education
+            name: education
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: School / place, name: place, widget: string, required: false }
+              - { label: Description, name: description, widget: text }
+          - { label: Contact intro text, name: contactIntro, widget: text }
+          - { label: Phone, name: phone, widget: string, required: false, hint: "Leave empty to keep your number private" }
+          - { label: Email, name: email, widget: string, required: false }
+          - { label: Social handle, name: social, widget: string, required: false }
+          - { label: Social link (URL), name: socialUrl, widget: string, required: false }
